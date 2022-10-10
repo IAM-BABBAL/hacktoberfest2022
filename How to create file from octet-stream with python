@@ -1,0 +1,35 @@
+import oracledb
+
+oracledb.init_oracle_client(lib_dir=r"C:\instantclient_21_6")
+dsn_tns = oracledb.makedsn('xxx', 3333, service_name='XXX') 
+conn = oracledb.connect(user='xxx', password='xxx', dsn=dsn_tns) 
+
+def output_type_handler(cursor, name, default_type, size, precision, scale):
+    if default_type == oracledb.DB_TYPE_CLOB:
+        return cursor.var(oracledb.DB_TYPE_LONG_RAW, arraysize=cursor.arraysize)
+    if default_type == oracledb.DB_TYPE_BLOB:
+        return cursor.var(oracledb.DB_TYPE_LONG_RAW, arraysize=cursor.arraysize)
+    else:
+        return cursor.var(oracledb.DB_TYPE_LONG_RAW, arraysize=cursor.arraysize)
+
+conn.outputtypehandler = output_type_handler
+
+c = conn.cursor()
+c.execute(''' SELECT "DATA"
+FROM "ZITSMSCHUL" . "SYSATTACHMEM1" 
+WHERE "TOPIC" ='IM28588' ''') 
+
+res = c.fetchall()
+
+strRes = str(res)
+
+strRes = strRes[2:-3]
+
+filePath = 'C:/Users/123/Desktop/37505_ping.doc'
+with open(filePath, 'w+b') as f: 
+    f.write(bytearray(strRes,encoding='utf-8'))
+    f.close()
+  
+c.close()
+conn.clos
+    
