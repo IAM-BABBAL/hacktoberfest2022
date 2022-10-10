@@ -1,0 +1,20 @@
+fetch("https://learn.algoritmika.org/api/v1/projects/comment/31315833", {
+  "headers": {
+    "accept": "*/*",
+    "accept-language": "ru,en;q=0.9",
+    "content-type": "application/json",
+    "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Yandex\";v=\"22\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin"
+  },
+  "referrer": "https://learn.algoritmika.org/my-class?category=new&filter=class_projects&projectId=31315833",
+  "referrerPolicy": "strict-origin-when-cross-origin",
+  "body": "{\"message\":\"data\"}",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "include"
+});
+
